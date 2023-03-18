@@ -5,7 +5,7 @@ import useProducts from '../Hooks/useProduct';
 
 const Products = () => {
     const [services, isLoading, error] = useProducts();
-    console.log(services?.length);
+    // console.log(services?.length);
     let item = services?.length;
 
     if (isLoading) {
