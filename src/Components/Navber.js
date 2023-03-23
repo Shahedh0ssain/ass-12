@@ -19,7 +19,7 @@ const Navber = ({ children }) => {
         <a className="p-3 font-medium "><CustomLink onClick={() => setToggle(false)} to='/'>Home</CustomLink ></a>,
         // <li><CustomLink  onClick={() => setToggle(false)} to='about'>About</CustomLink ></li>,
         <a className="p-3 font-medium"><CustomLink onClick={() => setToggle(false)} to='products'>Products</CustomLink ></a>,
-        <a className="p-3 font-medium"><CustomLink onClick={() => setToggle(false)} to='portfolio'>Portfolio</CustomLink ></a>,
+        // <a className="p-3 font-medium"><CustomLink onClick={() => setToggle(false)} to='portfolio'>Portfolio</CustomLink ></a>,
 
         // <li><CustomLink onClick={() => setToggle(false)} to='blog'>Blog</CustomLink ></li>,
         // 

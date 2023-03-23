@@ -12,20 +12,23 @@ import { Link } from "react-router-dom";
 
 const Services = ({ item }) => {
 
-    // const [services, isLoading, error] = useProducts();
+    // console.log(item);
+
     const navigate = useNavigate();
     const [page, setPage] = useState(0);
+    const [data, isLoading, error] = useProducts(page, 8);
 
 
+    // const { isLoading, error, data } = useQuery({
+    //     queryKey: ['data', page],
+    //     queryFn: () =>
+    //         fetch(`http://localhost:5000/services?page=${page}&size=8`).then(
+    //             (res) => res.json(),
+    //         ),
+    // })
 
-    const { isLoading, error, data } = useQuery({
-        queryKey: ['data', page],
-        queryFn: () =>
-            fetch(`http://localhost:5000/services?page=${page}&size=8`).then(
-                (res) => res.json(),
-            ),
-    })
 
+    // console.log('data', data?.count);
 
 
     const Pages = Math.ceil(data?.count / 8);
@@ -41,7 +44,7 @@ const Services = ({ item }) => {
     }
 
     if (error) {
-        console.log('data fetch error')
+        console.log('data fetch error',(error))
     }
 
     return (
@@ -71,17 +74,19 @@ const Services = ({ item }) => {
             <div className=' href="#"  btn-group py-5'>
 
                 {
-                    [...Array(Pages).keys()].map(Number => <a
+                    item === true ?
+                        [...Array(Pages).keys()].map(Number => <a
 
-                        href='#Services'
-                        key={Number}
-                        className={page === Number ? 'btn ' : 'btn btn-active '}
-                        onClick={() => {
-                            setPage(Number);
-                            // ScrollToTopOnMount();
-                        }}
-                    //    className="divide-fuchsia-50"
-                    >{Number + 1}</a>)
+                            href='#Services'
+                            key={Number}
+                            className={page === Number ? 'btn ' : 'btn btn-active '}
+                            onClick={() => {
+                                setPage(Number);
+                                // ScrollToTopOnMount();
+                            }}
+                        >{Number + 1}</a>)
+                        :
+                        <Link href='#Services' to='products' className='btn'>view all</Link>
                 }
 
             </div>

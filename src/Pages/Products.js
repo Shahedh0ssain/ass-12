@@ -4,20 +4,21 @@ import Services from '../Components/Services/Services';
 import useProducts from '../Hooks/useProduct';
 
 const Products = () => {
-    const [services, isLoading, error] = useProducts();
-    // console.log(services?.length);
-    let item = services?.length;
+    
+    // const [services, isLoading, error] = useProducts();
+    // // console.log(services?.length);
+    // let item = services?.length;
 
-    if (isLoading) {
-        <Loading></Loading>
-    }
-    if (error) {
-        console.log(error)
-    }
+    // if (isLoading) {
+    //     <Loading></Loading>
+    // }
+    // if (error) {
+    //     console.log(error)
+    // }
 
     return (
         <div>
-            <Services item={item}></Services>
+            <Services item={true}></Services>
         </div>
     );
 };

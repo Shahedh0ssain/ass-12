@@ -8,7 +8,7 @@ const AddReview = () => {
     const onSubmit = data => {
 
         console.log(data);
-        // fetch('https://ass-backend-12-copy.up.railway.app/service', {
+        // fetch('http://localhost:5000/service', {
         //     method: 'POST',
         //     headers: {
         //         'Content-Type': 'application/json'

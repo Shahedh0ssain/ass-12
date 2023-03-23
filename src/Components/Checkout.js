@@ -23,7 +23,7 @@ const Checkout = () => {
 
     useEffect(() => {
 
-        fetch(`https://ass-backend-12-copy.up.railway.app/service/${id}`)
+        fetch(`http://localhost:5000/service/${id}`)
             .then(res => res.json())
             .then(data => setService(data));
 
@@ -58,7 +58,7 @@ const Checkout = () => {
 
         }
         // console.log(booking);
-        fetch('https://ass-backend-12-copy.up.railway.app/booking', {
+        fetch('http://localhost:5000/booking', {
 
             method: 'POST',
             headers: {

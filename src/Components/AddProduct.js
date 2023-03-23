@@ -37,7 +37,7 @@ const AddProduct = () => {
                     }
 
                     //send my database:
-                    fetch('https://ass-backend-12-copy.up.railway.app/service', {
+                    fetch('http://localhost:5000/service', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ const AddProduct = () => {
             });
 
 
-        // fetch('https://ass-backend-12-copy.up.railway.app/service', {
+        // fetch('http://localhost:5000/service', {
         //     method: 'POST',
         //     headers: {
         //         'Content-Type': 'application/json'

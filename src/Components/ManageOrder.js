@@ -13,18 +13,18 @@ const ManageOrder = () => {
     const { isLoading, error, data: orders, } = useQuery({
         queryKey: ['orders', true],
         queryFn: () =>
-            fetch(`https://ass-backend-12-copy.up.railway.app/orders`).then(
+            fetch(`http://localhost:5000/orders`).then(
                 (res) => res.json(),
             ),
     })
 
-    console.log(orders)
+    // console.log(orders)
 
 
     const handleOrderCancle = (id) => {
-        console.log(id);
+        // console.log(id);
 
-        fetch(`https://ass-backend-12-copy.up.railway.app/deleteOrder/${id}`, {
+        fetch(`http://localhost:5000/deleteOrder/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -87,7 +87,7 @@ const ManageOrder = () => {
                                         {
                                             !paid ?
                                                 <>
-                                                    <Link ><button className='btn btn-outline btn-success'>painding</button></Link>
+                                                    <Link ><button className='btn btn-outline btn-success'>Confirm</button></Link>
                                                     <label for="my-modal-6" onClick={() => setOrderDelete(order)} className='btn btn-outline btn-error  mx-2'>Cancle</label>
                                                 </>
 

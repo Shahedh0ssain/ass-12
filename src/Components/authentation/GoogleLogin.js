@@ -2,12 +2,11 @@ import React from 'react';
 // import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import {  useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate } from 'react-router-dom';
 import useToken from '../../Hooks/useToken';
 
 
 const GoogleLogin = () => {
-    // const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     let location = useLocation();
     let navigate = useNavigate();

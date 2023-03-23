@@ -81,7 +81,7 @@ const Login = () => {
                         </p>
                         {/* logIn and regi toggle */}
                         {/* <a class="link link-error">I'm a simple link</a> */}
-                        <p className="py-2">Please Login <Link className='link link-error' to='/registration'>now</Link></p>
+                        <p className="py-2">Please registration <Link className='link link-error' to='/registration'>now</Link></p>
                         {/* <input type="submit" /> */}
                         <div className="card-actions justify-center ">
                             <input className="btn btn-primary w-full" type="submit" value="Login" />

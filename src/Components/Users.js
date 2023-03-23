@@ -13,7 +13,7 @@ const Users = () => {
     //    console.log(users);
     useEffect(() => {
 
-        fetch(`https://ass-backend-12-copy.up.railway.app/users`)
+        fetch(`http://localhost:5000/users`)
             .then(res => res.json())
             .then(data => setUsers(data));
 
@@ -22,7 +22,7 @@ const Users = () => {
 
     const makeAdmin = (email) => {
 
-        fetch(`https://ass-backend-12-copy.up.railway.app/user/admin/${email}`, {
+        fetch(`http://localhost:5000/user/admin/${email}`, {
             method: 'PUT',
         })
             .then(res => {

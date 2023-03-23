@@ -18,14 +18,14 @@ const useOrder = () => {
     }
 
     // const { isLoading, error, data: orders, refetch } = useQuery(['order', true], () =>
-    //     fetch(`https://ass-backend-12-copy.up.railway.app/myservice?email=${email}`)
+    //     fetch(`http://localhost:5000/myservice?email=${email}`)
     //         .then(res => res.json()
     //             // .then(data => setAdmin(data?.admin))
     //         ))
     const { isLoading, error, data: orders, refetch } = useQuery({
         queryKey: ['order', true],
         queryFn: () =>
-            fetch(`https://ass-backend-12-copy.up.railway.app/myservice?email=${email}`).then(
+            fetch(`http://localhost:5000/myservice?email=${email}`).then(
                 (res) => res.json(),
             ),
     })
@@ -38,7 +38,7 @@ const useOrder = () => {
     // useEffect(() => {
 
     //     if (user) {
-    //         fetch(`https://ass-backend-12-copy.up.railway.app/myservice?email=${user?.email}`)
+    //         fetch(`http://localhost:5000/myservice?email=${user?.email}`)
     //             .then(res => res.json())
     //             .then(data => setOrders(data));
     //     }

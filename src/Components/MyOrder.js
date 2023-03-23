@@ -17,7 +17,7 @@ const Myorder = () => {
     // useEffect(() => {
 
     //     if (user) {
-    //         fetch(`https://ass-backend-12-copy.up.railway.app/myservice?email=${user?.email}`)
+    //         fetch(`http://localhost:5000/myservice?email=${user?.email}`)
     //             .then(res => res.json())
     //             .then(data => setOrders(data));
     //     }
@@ -32,7 +32,7 @@ const Myorder = () => {
         // console.log(id);
 
         if (proceed) {
-            fetch(`https://ass-backend-12-copy.up.railway.app/deleteOrder/${id}`, {
+            fetch(`http://localhost:5000/deleteOrder/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

@@ -16,7 +16,7 @@ const useToken = (user) => {
 
         if (email) {
             // console.log(email);
-            fetch(`https://ass-backend-12-copy.up.railway.app/user/${email}`, {
+            fetch(`http://localhost:5000/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
