@@ -10,6 +10,8 @@ const ManageOrder = () => {
     // const [orders, isLoading, error,] = useOrder();
     const [orderDelete, setOrderDelete] = useState(null);
     const [approveOrder, setApproveOrder] = useState(null);
+    const [cencleLoader, setCencleLoader] = useState(false);
+    const [approveLoader, setApproveLoader] = useState(false);
 
     const { isLoading, error, data: orders, refetch } = useQuery({
         queryKey: ['orders', true],
@@ -23,6 +25,7 @@ const ManageOrder = () => {
 
 
     const handleOrderCancle = (id) => {
+        setCencleLoader(true)
 
         fetch(`http://localhost:5000/deleteOrder/${id}`, {
             method: 'DELETE'
@@ -30,26 +33,33 @@ const ManageOrder = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
+                    setCencleLoader(false);
                     refetch();
-                    console.log(data.success);
+                    // console.log(data.success);
                 }
             });
         setOrderDelete(null);
+
 
     }
 
     const hsndleStatus = (id) => {
 
-        console.log('click', id);
-        // fetch(`http://localhost:5000/status/${id}`, {
-        //     method: 'PUT'
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
+        setApproveLoader(true)
+        fetch(`http://localhost:5000/status/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data?.result?.modifiedCount > 0) {
+                    console.log(data?.result);
+                    setApproveLoader(false);
+                    refetch();
+                }
 
-        //     });
-        setApproveOrder(null)
+            });
+        setApproveOrder(null);
+
 
     }
 
@@ -92,7 +102,6 @@ const ManageOrder = () => {
 
                         {
                             orders?.map((order, index) =>
-                                //    key = {order._id} 
                                 <tr key={order?._id}>
 
                                     <th>{index + 1}</th>
@@ -100,11 +109,9 @@ const ManageOrder = () => {
                                     <td>{order?.quentity}</td>
                                     {/* <td>{order?.status}</td> */}
                                     <td className='font-medium'>{order?.price} Tk</td>
-                                    {/* <td>{order?._id }</td> */}
-                                    {/* <td> <Link to={order?._id}><button className='btn btn-outline btn-success'>pay</button></Link>  <button onClick={() => handleOrderCancle(order?._id)} className='btn btn-outline btn-error'>Cancle</button> </td> */}
+
                                     <td>
 
-                                        {/* <button onClick={() => showDetail(order?._id)} className='btn btn-outline btn-success'>pay</button> */}
                                         {
                                             (order?.Price && order?.paid) ?
                                                 <>
@@ -115,7 +122,7 @@ const ManageOrder = () => {
                                                             :
                                                             <>
                                                                 <Link ><button className='btn  btn-disabled'>pending</button></Link>
-                                                                <label for="my-modal-6" onClick={() => setApproveOrder(order)} className='btn btn-outline btn-success disabled mx-2'> approved</label>
+                                                                <label for="my-modal-6" onClick={() => setApproveOrder(order)} className={`btn btn-outline btn-success disabled mx-2 ${approveLoader && "loading"}`}> approved</label>
                                                             </>
 
 
@@ -125,7 +132,7 @@ const ManageOrder = () => {
                                                 :
                                                 <>
                                                     <Link ><button className='btn  btn-disabled'>Unpaid</button></Link>
-                                                    <label for="my-modal-6" onClick={() => setOrderDelete(order)} className='btn btn-outline btn-error  mx-2'>Cancle</label>
+                                                    <label for="my-modal-6" onClick={() => setOrderDelete(order)} className={`btn btn-outline btn-error mx-2 ${cencleLoader && "loading"}`}>Cancle</label>
                                                 </>
 
 
@@ -133,13 +140,6 @@ const ManageOrder = () => {
 
                                         }
 
-                                        {/* {
-                                            paid ?
-                                                <label for="my-modal-6" onClick={() => setOrderDelete(order)} className='btn btn-outline btn-error  mx-2'>Cancle</label>
-                                                :
-                                        }      <label for="my-modal-6" onClick={() => setOrderDelete(order)} className='btn btn-outline btn-error  mx-2'>Cancle</label> */}
-
-                                        {/* <label for="my-modal-6" onClick={() => setServiceDelete(service)} className="btn "> */}
 
                                     </td>
 

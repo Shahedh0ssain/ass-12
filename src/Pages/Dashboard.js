@@ -11,30 +11,27 @@ const Dashboard = () => {
     // const [user] = useAuthState(auth);
     const [admin, isLoading, error] = useAdmin();
 
-    // const  { admin } = admin;
-    // console.log(admin);
-
     const userLink = [
+        <li className='p-2'><NavLink to='/dashboard/profile'>MY Profile</NavLink></li>,
         <li className='p-2 '> <NavLink to='/dashboard/order'>MY Order</NavLink></li>,
         <li className='p-2'><NavLink to='/dashboard/addreview'>Add Review</NavLink></li>,
-        <li className='p-2'><NavLink to='/dashboard/profile'>MY Profile</NavLink></li>,
 
     ]
 
     const adminLink = [
+        <li className='p-2'><NavLink to='/dashboard/profile'>MY Profile</NavLink></li>,
         <li className='p-2 '> <NavLink to='/dashboard/manageProduct'>Manage Products</NavLink></li>,
         <li className='p-2'> <NavLink to='/dashboard/addProducts'>Add Product</NavLink></li>,
         <li className='p-2'> <NavLink to='/dashboard/manageOrder'>Manage Order</NavLink></li>,
         <li className='p-2'><NavLink to='/dashboard/addreview'>Add Review</NavLink></li>,
-        <li className='p-2'><NavLink to='/dashboard/profile'>MY Profile</NavLink></li>,
         <li className='p-2'><NavLink to='/dashboard/users'>Make Admin</NavLink></li>,
         // <li className='p-2'><NavLink to='/dashboard/payment'>Payment</NavLink></li>,
     ]
 
 
     if (isLoading) {
-        // return <Loading></Loading>
-        console.log('loading');
+        return <Loading></Loading>
+        // console.log('loading');
     }
 
     if (error) {

@@ -26,7 +26,7 @@ import UpdateProfile from './Components/UpdateProfile';
 import Blog from './Pages/Blog';
 import NotFoundPage from './Pages/NotFoundPage';
 import AddReview from './Components/AddReview';
-import  { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import { ToastContainer } from 'react-toastify';
 import Products from './Pages/Products';
 
@@ -76,16 +76,19 @@ function App() {
               path="dashboard"
               element={<Dashboard />}>
               {/* index */}
+              {/* path='profile' */}
               {/* <Route path='payment/:payment_id' element={<Payment />}></Route> */}
               <Route path='order' element={<MyOrder />}></Route>
               <Route path='review' element={<MyReview />}></Route>
+              <Route index element={<MyProfile />}></Route>
               <Route path='profile' element={<MyProfile />}></Route>
+
               <Route path='users' element={<Users />}></Route>
               {/* //admin see this route */}
-              <Route path='order/payment/:payId' element={<Payment />}></Route>
-
-              <Route path='manageOrder' index element={<ManageOrder />}></Route>
+              {/*  */}
               <Route path='manageProduct' element={<ManageProducts />}></Route>
+              <Route path='order/payment/:payId' element={<Payment />}></Route>
+              <Route path='manageOrder' element={<ManageOrder />}></Route>
               <Route path='addProducts' element={<AddProduct />}></Route>
               <Route path='addreview' element={<AddReview />}></Route>
               <Route path='profile/profileUpdate' element={<UpdateProfile />}></Route>

@@ -22,13 +22,9 @@ const Navber = ({ children }) => {
 
     const navLink = [
 
-        // <CustomLink  onClick={() => setToggle(false)} to='about'>About</CustomLink >,
         <a className="p-3 font-medium "><CustomLink onClick={() => setToggle(false)} to='/'>Home</CustomLink ></a>,
-        // <li><CustomLink  onClick={() => setToggle(false)} to='about'>About</CustomLink ></li>,
         <a className="p-3 font-medium"><CustomLink onClick={() => setToggle(false)} to='products'>Products</CustomLink ></a>,
-        // <a className="p-3 font-medium"><CustomLink onClick={() => setToggle(false)} to='portfolio'>Portfolio</CustomLink ></a>,
-
-        // <li><CustomLink onClick={() => setToggle(false)} to='blog'>Blog</CustomLink ></li>,
+       
         // 
         user ?
             <>
@@ -36,16 +32,10 @@ const Navber = ({ children }) => {
                 {
                     <a className="p-3 font-medium"><CustomLink onClick={() => setToggle(true)} to='dashboard'>Dashboard</CustomLink ></a>
                 }
-                {/* <span className="p-3 font-medium">Name</span> */}
                 <span className="p-3 font-medium">{user?.displayName}</span>
 
-                {/* <li><Link>{user?.displayName?.slice(0, 10)}</Link ></li> */}
                 <label for="my-modal-6" className='p-3 font-medium'
-                    // const proceed = window.confirm('Are you sure ?');
-
-                    // if (proceed) {
-                    //     signOut(auth)
-                    // }
+    
                     onClick={() => setToggle2(true)}
 
                 >Logout</label>
@@ -56,7 +46,6 @@ const Navber = ({ children }) => {
             <>
                 <a className="p-3 font-medium"><CustomLink to='login'>Login</CustomLink ></a>,
 
-                {/* <li className="font-medium"><CustomLink to='login'>Login</CustomLink ></li> */}
 
             </>
     ]
