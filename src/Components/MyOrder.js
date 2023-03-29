@@ -9,6 +9,13 @@ const Myorder = () => {
     // const [user] = useAuthState(auth);
     const [orders, isLoading, error, refetch] = useOrder();
 
+    if (error) {
+        console.log('Error');
+    }
+    if (isLoading) {
+        console.log("Loading")
+    }
+    // console.log(orders);
     // const [orders,setOrders] =  useState([]);
 
     // const {payment_id} = useParams();
@@ -74,9 +81,20 @@ const Myorder = () => {
                                 <td>{order?.Price} Tk</td>
                                 {/* <td>{order?._id }</td> */}
                                 <td>
-                                    {(order.Price && order.paid) && <button className='btn btn-disabled text-green-500 mx-2'>paid</button>}
-                                    {(order.Price && !order.paid) && <Link to={`payment/${order?._id}`}><button className='btn mx-2'>pay</button></Link>}
-                                    < button onClick={() => handleOrderCancle(order?._id)} className='btn'>Cancle</button>
+                                    {(order.Price && order.paid) &&
+                                        <>
+                                            <button className='btn btn-disabled text-green-500 mx-2'>paid</button>
+                                            <button className='btn btn-disabled text-green-500 mx-2'>details</button>
+
+                                        </>
+                                    }
+                                    {(order.Price && !order.paid) &&
+                                        <>
+                                            <Link to={`payment/${order?._id}`}><button className='btn mx-2'>pay</button></Link>
+                                            < button onClick={() => handleOrderCancle(order?._id)} className='btn'>Cancle</button>
+                                        </>
+
+                                    }
                                 </td>
                             </tr>)
                         }

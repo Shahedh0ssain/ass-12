@@ -63,6 +63,8 @@ const ManageProducts = () => {
             {
                 serviceDelete && <ConfirmModal
                     services={serviceDelete}
+                    btn="DELETE"
+                    msg='Are you sure delete this items !!'
                     // setDelete={setServiceDelete}
                     handle={handleServiceDelete}
                 ></ConfirmModal>

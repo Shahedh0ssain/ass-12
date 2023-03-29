@@ -10,7 +10,10 @@ const Users = () => {
     // const [users, isLoading, error,] = useUsers();
     const [users, setUsers] = useState([]);
     // // const [makeAdminrole, setMakeAdmin] = useState(null);
-    //    console.log(users);
+    const [makeAdminrole, setMakeAdmin] = useState(false);
+    const [deleteAdmin, setDeleteAdmin] = useState(false);
+
+
     useEffect(() => {
 
         fetch(`http://localhost:5000/users`)
@@ -18,6 +21,7 @@ const Users = () => {
             .then(data => setUsers(data));
 
     }, [users])
+    
 
 
     const makeAdmin = (email) => {
@@ -34,7 +38,7 @@ const Users = () => {
             })
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    console.log(data)
+                    // console.log(data)
                     toast.success(`Congratation ${email}`);
                 }
             }
@@ -68,7 +72,7 @@ const Users = () => {
                                 {/* <td>{order?.price} Tk</td> */}
                                 {/* <td>{order?._id }</td> */}
                                 <td>
-                                    <Link ><button className='btn btn-outline btn-error m-2'>Delete</button></Link>
+                                   <label for="my-modal-6" onClick={() => setDeleteAdmin(true)} className='btn btn-outline btn-error m-2'>Delete</label>
 
                                     {
                                         user?.role === 'admin' ?
@@ -84,8 +88,14 @@ const Users = () => {
                     </tbody>
                 </table>
             </div>
-
-        </div>
+            {
+                deleteAdmin && <ConfirmModal
+                    services={null}
+                    btn="DELETE"
+                    msg='Are you sure delete this items !!'
+                ></ConfirmModal>
+            }
+        </div >
     );
 };
 

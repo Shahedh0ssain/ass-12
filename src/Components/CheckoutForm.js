@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
-import { json, Navigate } from 'react-router-dom';
+import { Navigate, redirect, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const CheckoutForm = ({ order }) => {
 
@@ -13,7 +14,7 @@ const CheckoutForm = ({ order }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { Price, name, email, _id } = order;
-    // console.log('secret', email);
+    // console.log('order id:', _id);
 
 
 
@@ -25,12 +26,19 @@ const CheckoutForm = ({ order }) => {
             body: JSON.stringify({ Price }),
         })
             .then((res) => res.json())
-            .then((data) => setClientSecret(data.clientSecret));
+            .then((data) => {
+                console.log("client secret", data.clientSecret);
+                return setClientSecret(data.clientSecret)
+            });
     }, [Price]);
+
+    const navigate = useNavigate();
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // console.log('handleSubmin');
 
         if (!stripe || !elements) {
             // Stripe.js has not loaded yet. Make sure to disable
@@ -49,13 +57,15 @@ const CheckoutForm = ({ order }) => {
         });
 
         if (error) {
-            console.log(error);
+            console.log('Card error', error);
             setCardError(error.message);
         } else {
             setCardError('')
         }
+
         setSuccess('');
         setProcessing(true);
+
         const { paymentIntent, error: ConfirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -76,8 +86,7 @@ const CheckoutForm = ({ order }) => {
 
         if (paymentIntent.status === "succeeded") {
 
-            console.log('card', card)
-
+            console.log('card', card);
 
             const payment = {
                 name,
@@ -93,11 +102,13 @@ const CheckoutForm = ({ order }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log('py', data);
+                    console.log('pyment', data);
                     if (data.insertedId) {
                         setSuccess('Congratulatio! Your payment completed.');
                         setTransaction(paymentIntent.id);
-                        <Navigate to="/dashboard/order" replace={true} />
+                        toast.success('Congratulatio! Your payment completed.');
+                        navigate("/dashboard/order");
+                        // <Navigate to="/dashboard/order" replace={true} />
                     }
                 })
 

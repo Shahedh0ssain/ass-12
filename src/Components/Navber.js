@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 // import { Link, NavLink, useLocation } from "react-router-dom";
 import auth from "../firebase.init";
+import ConfirmModal from "./ConfirmModal";
 import CustomLink from "./CustomLink";
 
 
@@ -11,6 +12,12 @@ const Navber = ({ children }) => {
 
     const [user, loading] = useAuthState(auth);
     const [toggle, setToggle] = useState(false);
+    const [toggle2, setToggle2] = useState(false);
+
+    const handleLOgOut = () => {
+        signOut(auth);
+        setToggle2(false);
+    }
     // console.log(user);
 
     const navLink = [
@@ -33,14 +40,15 @@ const Navber = ({ children }) => {
                 <span className="p-3 font-medium">{user?.displayName}</span>
 
                 {/* <li><Link>{user?.displayName?.slice(0, 10)}</Link ></li> */}
-                <button className='p-3 font-medium' onClick={() => {
-                    const proceed = window.confirm('Are you sure ?');
+                <label for="my-modal-6" className='p-3 font-medium'
+                    // const proceed = window.confirm('Are you sure ?');
 
-                    if (proceed) {
-                        signOut(auth)
-                    }
-                }
-                }>Logout</button>
+                    // if (proceed) {
+                    //     signOut(auth)
+                    // }
+                    onClick={() => setToggle2(true)}
+
+                >Logout</label>
 
 
             </>
@@ -59,7 +67,7 @@ const Navber = ({ children }) => {
                 {/* <!-- Navbar --> */}
                 <div className="w-full navbar bg-gradient-to-r from-[#e4cd81]  to-[#d4af37] ">
                     <div className="flex-1 px-2 mx-2 font-bold">
-                        <img className="w-[60px] md:w-[100px]" src="https://www.dewalt.com/sites/g/files/xnuzat961/files/dewalt_black%402x.png" alt="" srcset="" />
+                        <img className="w-[60px] md:w-[100px]" src="https://www.dewalt.com/sites/g/files/xnuzat961/files/dewalt_black%402x.png" alt="" srcSet="" />
 
                     </div>
 
@@ -111,8 +119,18 @@ const Navber = ({ children }) => {
                     <li><a>Logout</a></li>
                 </ul>
             </div>
-
+            {
+                toggle2 && <ConfirmModal
+                    services={null}
+                    btn="Logout"
+                    msg='Are you sure logout !!'
+                    // setDelete={setServiceDelete}
+                    handle={handleLOgOut}
+                ></ConfirmModal>
+            }
         </div>
+
+
     );
 };
 

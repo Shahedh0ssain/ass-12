@@ -5,10 +5,8 @@ import Service from './Service';
 import { useNavigate } from 'react-router-dom';
 // import Loading from '../Components/Loading';
 import Loading from '../Loading';
-import { useQuery } from 'react-query';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { Link } from "react-router-dom";
-// import ScrollToTopOnMount from '../ScrollToTopOnMount';
 
 const Services = ({ item }) => {
 
@@ -17,18 +15,6 @@ const Services = ({ item }) => {
     const navigate = useNavigate();
     const [page, setPage] = useState(0);
     const [data, isLoading, error] = useProducts(page, 8);
-
-
-    // const { isLoading, error, data } = useQuery({
-    //     queryKey: ['data', page],
-    //     queryFn: () =>
-    //         fetch(`http://localhost:5000/services?page=${page}&size=8`).then(
-    //             (res) => res.json(),
-    //         ),
-    // })
-
-
-    // console.log('data', data?.count);
 
 
     const Pages = Math.ceil(data?.count / 8);
@@ -44,7 +30,7 @@ const Services = ({ item }) => {
     }
 
     if (error) {
-        console.log('data fetch error',(error))
+        console.log('data fetch error', (error))
     }
 
     return (
@@ -68,7 +54,6 @@ const Services = ({ item }) => {
                 }
             </div>
 
-            {/* <p className='text-3xl'>Current page : {page}</p> */}
 
             {/* pagination */}
             <div className=' href="#"  btn-group py-5'>
@@ -86,7 +71,7 @@ const Services = ({ item }) => {
                             }}
                         >{Number + 1}</a>)
                         :
-                        <Link href='#Services' to='products' className='btn'>view all</Link>
+                        <a> <Link to='products' className='btn'>view all</Link></a>
                 }
 
             </div>
