@@ -8,7 +8,7 @@ const useProducts = (page, size) => {
     const { isLoading, error, data } = useQuery({
         queryKey: ['data', page],
         queryFn: () =>
-            fetch(`http://localhost:5000/services?page=${page}&size=8`).then(
+            fetch(`https://ass-backend-12-copy.onrender.com/services?page=${page}&size=8`).then(
                 (res) => res.json(),
             ),
     })
@@ -18,7 +18,7 @@ const useProducts = (page, size) => {
     // const { isLoading, error, data: services, refetch } = useQuery({
     //     queryKey: ['services'],
     //     queryFn: () =>
-    //         fetch('http://localhost:5000/services').then(
+    //         fetch('https://ass-backend-12-copy.onrender.com/services').then(
     //             (res) => res.json(),
     //         ),
     // })

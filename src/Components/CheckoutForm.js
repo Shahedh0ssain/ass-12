@@ -20,7 +20,7 @@ const CheckoutForm = ({ order }) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://ass-backend-12-copy.onrender.com/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ Price }),
@@ -95,7 +95,7 @@ const CheckoutForm = ({ order }) => {
                 bookId: _id
             }
 
-            fetch("http://localhost:5000/payments", {
+            fetch("https://ass-backend-12-copy.onrender.com/payments", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payment),

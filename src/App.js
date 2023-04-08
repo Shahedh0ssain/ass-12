@@ -101,6 +101,7 @@ function App() {
         <Footer></Footer>
         <Toaster />
         <ToastContainer />
+        {/* <ScrollRestoration /> */}
       </Navber>
 
     </div>

@@ -20,7 +20,7 @@ const Booking = () => {
         //         price: data?.price
         //     }
         
-        //    fetch('http://localhost:5000/booking',{
+        //    fetch('https://ass-backend-12-copy.onrender.com/booking',{
         //      method:'POST',
         //      headers: {
         //         'content-type':'aplication/json'

@@ -11,7 +11,7 @@ const ManageProducts = () => {
     // const { isLoading, error,refetch, data: services } = useQuery({
     //     queryKey: ['Alldata'],
     //     queryFn: () =>
-    //         fetch(`http://localhost:5000/all-services`).then(
+    //         fetch(`https://ass-backend-12-copy.onrender.com/all-services`).then(
     //             (res) => res.json(),
     //         ),
     // })
@@ -34,7 +34,7 @@ const ManageProducts = () => {
 
     const handleServiceDelete = (id) => {
 
-        fetch(`http://localhost:5000/deleteService/${id}`, {
+        fetch(`https://ass-backend-12-copy.onrender.com/deleteService/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

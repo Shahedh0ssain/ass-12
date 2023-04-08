@@ -16,7 +16,7 @@ const ManageOrder = () => {
     const { isLoading, error, data: orders, refetch } = useQuery({
         queryKey: ['orders', true],
         queryFn: () =>
-            fetch(`http://localhost:5000/orders`).then(
+            fetch(`https://ass-backend-12-copy.onrender.com/orders`).then(
                 (res) => res.json(),
             ),
     })
@@ -27,7 +27,7 @@ const ManageOrder = () => {
     const handleOrderCancle = (id) => {
         setCencleLoader(true)
 
-        fetch(`http://localhost:5000/deleteOrder/${id}`, {
+        fetch(`https://ass-backend-12-copy.onrender.com/deleteOrder/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -46,7 +46,7 @@ const ManageOrder = () => {
     const hsndleStatus = (id) => {
 
         setApproveLoader(true)
-        fetch(`http://localhost:5000/status/${id}`, {
+        fetch(`https://ass-backend-12-copy.onrender.com/status/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())

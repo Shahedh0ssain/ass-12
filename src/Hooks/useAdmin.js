@@ -17,7 +17,7 @@ const useAdmin = () => {
     }
 
     const { isLoading, error, data: admin } = useQuery('role', () =>
-        fetch(`http://localhost:5000/admin/${email}`).then(res =>
+        fetch(`https://ass-backend-12-copy.onrender.com/admin/${email}`).then(res =>
             res.json()
         ))
 
@@ -26,7 +26,7 @@ const useAdmin = () => {
     return [admin, isLoading, error]
 
     // const { isLoading, error, data } = useQuery('admin', () =>
-    //     fetch(`http://localhost:5000/admin/${email}`)
+    //     fetch(`https://ass-backend-12-copy.onrender.com/admin/${email}`)
     //         .then(res => res.json()
     //             .then(data => setAdmin(data?.admin))
     //         ))
@@ -39,7 +39,7 @@ const useAdmin = () => {
     // useEffect(() => {
     //     const email = user?.email;
     //     if (email) {
-    //         fetch(`http://localhost:5000/admin/${email}`)
+    //         fetch(`https://ass-backend-12-copy.onrender.com/admin/${email}`)
     //             .then(res => res.json())
     //             .then(data => setAdmin(data?.admin))
     //     }

@@ -16,7 +16,7 @@ const Users = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/users`)
+        fetch(`https://ass-backend-12-copy.onrender.com/users`)
             .then(res => res.json())
             .then(data => setUsers(data));
 
@@ -26,7 +26,7 @@ const Users = () => {
 
     const makeAdmin = (email) => {
 
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://ass-backend-12-copy.onrender.com/user/admin/${email}`, {
             method: 'PUT',
         })
             .then(res => {

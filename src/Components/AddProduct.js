@@ -37,7 +37,7 @@ const AddProduct = () => {
                     }
 
                     //send my database:
-                    fetch('http://localhost:5000/service', {
+                    fetch('https://ass-backend-12-copy.onrender.com/service', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ const AddProduct = () => {
             });
 
 
-        // fetch('http://localhost:5000/service', {
+        // fetch('https://ass-backend-12-copy.onrender.com/service', {
         //     method: 'POST',
         //     headers: {
         //         'Content-Type': 'application/json'

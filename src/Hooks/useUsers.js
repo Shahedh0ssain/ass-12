@@ -10,7 +10,7 @@ const useUsers = () => {
     const [user, loading, Uerror] = useAuthState(auth);
 
     const { isLoading, error, data: users } = useQuery('user', () =>
-        fetch(`http://localhost:5000/user/${user?.email}`).then(res =>
+        fetch(`https://ass-backend-12-copy.onrender.com/user/${user?.email}`).then(res =>
             res.json()
         ))
 

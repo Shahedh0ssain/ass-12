@@ -8,7 +8,7 @@ import CheckoutForm from './CheckoutForm';
 const Payment = () => {
 
     let { payId } = useParams();
-    const url = `http://localhost:5000/order/${payId}`;
+    const url = `https://ass-backend-12-copy.onrender.com/order/${payId}`;
 
     const { data: order, error, isLoading } = useQuery(['order', payId], () =>
         fetch(url).then(res => res.json()

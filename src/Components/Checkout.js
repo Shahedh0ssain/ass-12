@@ -23,7 +23,7 @@ const Checkout = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/service/${id}`)
+        fetch(`https://ass-backend-12-copy.onrender.com/service/${id}`)
             .then(res => res.json())
             .then(data => setService(data));
 
@@ -58,7 +58,7 @@ const Checkout = () => {
 
         }
         // console.log(booking);
-        fetch('http://localhost:5000/booking', {
+        fetch('https://ass-backend-12-copy.onrender.com/booking', {
 
             method: 'POST',
             headers: {

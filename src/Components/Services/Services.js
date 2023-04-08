@@ -5,8 +5,9 @@ import Service from './Service';
 import { useNavigate } from 'react-router-dom';
 // import Loading from '../Components/Loading';
 import Loading from '../Loading';
-import {  useState } from 'react';
+import { useState } from 'react';
 import { Link } from "react-router-dom";
+
 
 const Services = ({ item }) => {
 
@@ -59,18 +60,23 @@ const Services = ({ item }) => {
             <div className=' href="#"  btn-group py-5'>
 
                 {
-                    item === true ?
+                    (item) === true ?
                         [...Array(Pages).keys()].map(Number => <a
 
-                            href='#Services'
+                            // href='#Services'
+                            preventScrollReset={true}
                             key={Number}
                             className={page === Number ? 'btn ' : 'btn btn-active '}
                             onClick={() => {
                                 setPage(Number);
-                                // ScrollToTopOnMount();
+                               
+
+
                             }}
                         >{Number + 1}</a>)
+
                         :
+
                         <a> <Link to='products' className='btn'>view all</Link></a>
                 }
 

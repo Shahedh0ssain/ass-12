@@ -38,7 +38,7 @@ const UpdateProfile = () => {
 
         // console.log('email', user?.email);
 
-        fetch(`http://localhost:5000/user/${user?.email}`, {
+        fetch(`https://ass-backend-12-copy.onrender.com/user/${user?.email}`, {
             method: 'PUT',
 
             headers: {
